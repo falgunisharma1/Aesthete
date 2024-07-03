@@ -1,0 +1,197 @@
+/* Main container for the creator list */
+
+body{
+  background-color: black;
+}
+.app_name{
+  font-size: larger;
+  color:black;
+  text-align: center;
+  font-size: 300%;
+
+}
+
+.creator_list {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  margin: 16px 0;
+  background-color: #f9f9f9;
+}
+
+/* Container for the creator's information (image, name, bio) */
+.creator_info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+/* Style for the creator's profile image */
+.creators_images {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 16px;
+  object-fit: cover; /* Ensures the image covers the area without stretching */
+}
+
+/* Style for the creator's name */
+.creator_name {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+/* Style for the creator's bio */
+.creator_bio {
+  margin: 8px 0 0 0;
+  font-size: 14px;
+  color: #666;
+}
+
+/* Container for the content images */
+.creator_content_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Style for the content images */
+.creator_content {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* Ensures the image covers the area without stretching */
+  border-radius: 4px;
+}
+
+/* Container for the entire creator shop */
+.creator-shop {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Container for the creator's info section */
+.creator-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+/* Style for the creator's profile image */
+.creator-profile-image {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+/* Container for the creator's details (name and bio) */
+.creator-details {
+  flex-grow: 1;
+}
+
+/* Style for the creator's name */
+.creator-name {
+  font-size: 2em;
+  margin: 0;
+  color: #333;
+}
+
+/* Style for the creator's bio */
+.creator-bio {
+  font-size: 1.2em;
+  color: #666;
+}
+
+/* Title for the content section */
+.content-title {
+  font-size: 1.5em;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Container for the content list */
+.content-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+/* Container for each content item */
+.content-item {
+  width: calc(33.333% - 20px);
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for content items */
+.content-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for the content image */
+.content-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+/* Container for the content details (title, description, price) */
+.content-details {
+  padding: 15px;
+}
+
+/* Style for the content title */
+.content-details .content-title {
+  font-size: 1.2em;
+  margin: 0 0 10px;
+  color: #333;
+}
+
+/* Style for the content description */
+.content-description {
+  font-size: 1em;
+  margin: 0 0 10px;
+  color: #666;
+}
+
+/* Style for the content price */
+.content-price {
+  font-size: 1em;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Container for the application name */
+.app_name {
+  font-size: 2em;
+  font-weight: bold;
+  text-align: center;
+  margin: 20px 0;
+  background-color: black;
+  
+}
+
+/* Link styling for the application name */
+.app_name_link {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+  color:#ddd
+}
+
+.app_name_link:hover {
+  color: #007bff; /* Change to your desired hover color */
+  color:#ddd
+}
+
+

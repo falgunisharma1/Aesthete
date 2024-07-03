@@ -3,6 +3,26 @@ const router = express.Router()
 const pool = require('../database'); 
 const queries = require('../queries');
 
+
+//GET route to retrieve all the creators
+
+router.get("/all", async (req, res) => {
+  try {
+    const creatorResult = await pool.query(queries.findAllCreators);
+    
+    if (creatorResult.rows.length === 0) {
+      return res.status(404).json({ message: 'No Creators found' });
+    }
+
+    res.json(creatorResult.rows);
+  } catch (err) {
+    console.error('Error fetching creators:', err);
+    res.status(500).send('Server Error');
+  }
+
+});
+
+
 // GET route to retrieve a creator by ID and list all their content
 router.get('/:id', async (req, res) => {
   const creatorId = req.params.id;
@@ -16,6 +36,7 @@ router.get('/:id', async (req, res) => {
     }
 
     const creator = creatorResult.rows[0];
+    console.log(creator)
 
    
     const contentResult = await pool.query(queries.findAllContentByCreatorId, [creatorId]);
@@ -23,15 +44,14 @@ router.get('/:id', async (req, res) => {
     const content = contentResult.rows;
 
     res.json({
-      creator: {
+      
         username: creator.username,
         name: creator.name,
         email: creator.email,
-        profileImage: creator.profileImage,
+        profileImage: creator.profileimage,
         bio: creator.bio,
-        coverImage: creator.coverImage
-      },
-      content: content
+        coverImage: creator.coverimage,
+        content: content
     });
   } catch (error) {
     console.error('Error retrieving creator and content:', error);

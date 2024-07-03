@@ -1,25 +1,23 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import "./App.css";
+import AppName from "./components/AppName";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import BuyerLoginSignup from "./pages/Buyer Log Sign";
+import BuyerHomePage from "./pages/Buyer Home Page";
+import CreatorShop from "./pages/Creator Shop";
 
 function App() {
-  const [backendData, setbackendData] = useState([{}]);
-
-  useEffect(() => {
-    fetch("/api")
-      .then((response) => response.json())
-      .then((data) => setbackendData(data));
-  }, []);
-
   return (
-    <div>
-      {typeof backendData.pets === "undefined" ? (
-        <p>Loading ...</p>
-      ) : (
-        backendData.pets.map((pets, i) => 
-          <p key={i}>{pets}</p>
-        )
-      )}
-    </div>
+    <BrowserRouter>
+      <div>
+        <AppName />
+        <Routes>
+          <Route path="/login-signup" element={<BuyerLoginSignup />} />
+          <Route path="/everything" element={<BuyerHomePage />} />
+          <Route path="/shop/:creatorid" element={<CreatorShop />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
