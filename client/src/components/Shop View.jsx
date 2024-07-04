@@ -1,23 +1,31 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import BuyNowButton from "./Buy Now Button";
+import EditContent from "./Edit Content button"
 
-const CreatorShop = () => {
+const ShopView = ({isCreatorView}) => {
   const [creatorData, setCreatorData] = useState({});
-  const { creatorid } = useParams();
-
+  const { creator_id } = useParams();
+  console.log(creator_id)
   useEffect(() => {
-    fetch(`/creator/${creatorid}`)
-      .then((response) => response.json())
+    fetch(`/creator/${creator_id}`)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error('Network response was not ok');
+        }
+        return response.json();
+      })
       .then((data) => {
         setCreatorData(data);
       })
       .catch((error) => {
-        console.error("Error fetching creator data:", error);
+        console.error('Error fetching creator data:', error);
       });
-  }, [creatorid]); // Fetch data when id changes
+  }, [creator_id]);
+  
 
   useEffect(() => {
-    console.log(creatorData.profileImage);
+    console.log(creatorData.profile_image);
   }, [creatorData]);
 
   return (
@@ -25,7 +33,7 @@ const CreatorShop = () => {
       <div className="creator-info">
         <img
           className="creator-profile-image"
-          src={creatorData.profileImage} 
+          src={creatorData.profile_image} 
           alt={`${creatorData.name}'s profile`}
         />
         <div className="creator-details">
@@ -39,7 +47,7 @@ const CreatorShop = () => {
           creatorData.content.map((contentItem, index) => (
             <div key={index} className="content-item">
               <img
-                src={contentItem.fileurl} // Ensure this matches the key from your backend
+                src={contentItem.file_url} // Ensure this matches the key from your backend
                 alt={contentItem.title}
                 className="content-image"
               />
@@ -52,6 +60,16 @@ const CreatorShop = () => {
                 ) : (
                   <button>Sold</button>
                 )}
+                
+                  {isCreatorView === true ? (
+                    <div>
+                    <EditContent content_id={contentItem.content_id}/>
+                    <button>Delete</button>
+                    </div>
+                  ):(<BuyNowButton/>)}
+                
+                
+                
               </div>
             </div>
           ))}
@@ -60,4 +78,4 @@ const CreatorShop = () => {
   );
 };
 
-export default CreatorShop;
+export default ShopView;

@@ -2,15 +2,15 @@
 
 body{
   background-color: black;
-}
-.app_name{
-  font-size: larger;
-  color:black;
-  text-align: center;
-  font-size: 300%;
-
+  color: white;
 }
 
+.buyer_home_page{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 .creator_list {
   width: 50%;
   display: flex;
@@ -97,22 +97,22 @@ body{
 
 /* Style for the creator's name */
 .creator-name {
-  font-size: 2em;
+  font-size: 1.7em;
   margin: 0;
-  color: #333;
+  color: #f9f5f5;
 }
 
 /* Style for the creator's bio */
 .creator-bio {
   font-size: 1.2em;
-  color: #666;
+  color: #b7b7b7;
 }
 
 /* Title for the content section */
 .content-title {
   font-size: 1.5em;
   margin-bottom: 20px;
-  color: #333;
+  color: #b0afaf;
 }
 
 /* Container for the content list */
@@ -173,11 +173,10 @@ body{
 
 /* Container for the application name */
 .app_name {
-  font-size: 2em;
+  font-size: 2.5em;
   font-weight: bold;
   text-align: center;
   margin: 20px 0;
-  background-color: black;
   
 }
 
@@ -191,7 +190,12 @@ body{
 
 .app_name_link:hover {
   color: #007bff; /* Change to your desired hover color */
-  color:#ddd
+  color:#ffffff
+}
+
+.update-content-form{
+  background-color: #b0afaf;
+  color: black;
 }
 
 

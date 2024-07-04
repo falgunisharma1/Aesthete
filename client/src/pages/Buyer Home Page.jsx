@@ -22,10 +22,10 @@ const BuyerHomePage = () => {
         <p>Loading...</p>
       ) : (
         backendData.map((user, i) => (
-          <Link to={`/shop/${user.creatorid}`} key={i} className="creator_list">
+          <Link to={`/shop/${user.creator_id}`} key={i} className="creator_list">
            
             <div className="creator_info">
-              <img className="creators_images" src={user.profileimage} alt={`${user.name}'s profile`} />
+              <img className="creators_images" src={user.profile_image} alt={`${user.name}'s profile`} />
               <div>
                 <p className="creator_name">{user.name}</p>
                 <p className="creator_bio">{user.bio}</p>
@@ -33,7 +33,7 @@ const BuyerHomePage = () => {
             </div>
             <div className="creator_content_container">
               {user.content.map((contentItem, j) => (
-                <img key={j} className="creator_content" src={contentItem.fileUrl} alt={contentItem.title} />
+                <img key={j} className="creator_content" src={contentItem.file_url} alt={contentItem.title} />
               ))}
             </div>
           </Link>

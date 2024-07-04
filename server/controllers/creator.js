@@ -25,11 +25,11 @@ router.get("/all", async (req, res) => {
 
 // GET route to retrieve a creator by ID and list all their content
 router.get('/:id', async (req, res) => {
-  const creatorId = req.params.id;
+  const creator_id = req.params.id;
 
   try {
     
-    const creatorResult = await pool.query(queries.findCreatorById, [creatorId]);
+    const creatorResult = await pool.query(queries.findCreatorById, [creator_id]);
 
     if (creatorResult.rows.length === 0) {
       return res.status(404).json({ message: 'Creator not found' });
@@ -39,7 +39,7 @@ router.get('/:id', async (req, res) => {
     console.log(creator)
 
    
-    const contentResult = await pool.query(queries.findAllContentByCreatorId, [creatorId]);
+    const contentResult = await pool.query(queries.findAllContentBycreator_id, [creator_id]);
 
     const content = contentResult.rows;
 
@@ -48,9 +48,9 @@ router.get('/:id', async (req, res) => {
         username: creator.username,
         name: creator.name,
         email: creator.email,
-        profileImage: creator.profileimage,
+        profile_image: creator.profile_image,
         bio: creator.bio,
-        coverImage: creator.coverimage,
+        cover_image: creator.cover_image,
         content: content
     });
   } catch (error) {

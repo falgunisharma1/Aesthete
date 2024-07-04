@@ -5,22 +5,30 @@ const queries = require('../queries');
 
 
 
-// GET route to retrieve a content by contentId
+// GET route to retrieve a content by content_id
 
 router.get('/:id', async (req, res)=>{
-  const contentId = req.params.id;
+  const content_id = req.params.id;
 
   try{
-    const contentResult = await pool.query(queries.findContentById, [contentId]);
+    const contentResult = await pool.query(queries.findContentById, [content_id]);
 
     if (contentResult.rows.length === 0) {
       return res.status(404).json({ message: 'Content not found' });
     }
     
     const content = contentResult.rows[0]
+    console.log(content)
 
     res.json({
-      content:content
+      content_id: content.content_id,
+      title: content.title,
+      description: content.description,
+      file_url: content.file_url,
+      creator_id: content.creator_id,
+      price: content.price,
+      sold: content.sold,
+      buyer_id: content.buyer_id
     })
   }catch{(err)
       console.log(err)
@@ -31,14 +39,14 @@ router.get('/:id', async (req, res)=>{
 //Create New Content:
 
 router.post("/new", async (req, res) => {
-  const { title, description, fileUrl, creatorId, price, sold, buyerId } = req.body;
+  const { title, description, file_url, creator_id, price, sold, buyerId } = req.body;
 
   try {
     const newContentQuery = await pool.query(queries.createNewContent, [
       title,
       description,
-      fileUrl,
-      creatorId,
+      file_url,
+      creator_id,
       price || 0.0,
       sold || false,
       buyerId || null
@@ -46,7 +54,7 @@ router.post("/new", async (req, res) => {
   
     res.json({
       message: 'Content created successfully',
-      contentId: newContentQuery.rows[0].contentId
+      content_id: newContentQuery.rows[0].content_id
     });
   } catch (err) {
     console.error('Error creating content:', err);
@@ -58,19 +66,19 @@ router.post("/new", async (req, res) => {
 //Update Content:
 
 router.put('/update/:id', async (req, res)=>{
-  const contentId = req.params.id;
-  const { title, description, fileUrl, creatorId, price, sold, buyerId } = req.body;
+  const content_id = req.params.id;
+  const { title, description, file_url, price, creator_id} = req.body;
   try{
     await pool.query(queries.updateContentById, [
       title,
       description,
-      fileUrl,
-      creatorId,
+      file_url,
       price || 0.0,
-      sold || false,
-      buyerId || null,
-      contentId
+      creator_id,
+      content_id
     ]);
+
+    console.log("done")
 
     res.json({
       message:"content updated"
@@ -84,10 +92,10 @@ router.put('/update/:id', async (req, res)=>{
 //Delete content
 
 router.delete('/:id', async (req, res) => {
-  const contentId = req.params.id;
+  const content_id = req.params.id;
 
   try {
-    const result = await pool.query(queries.deleteContentById, [contentId]);
+    const result = await pool.query(queries.deleteContentById, [content_id]);
 
     if (result.rowCount === 0) {
       return res.status(404).json({ message: 'Content not found' });

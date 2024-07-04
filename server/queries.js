@@ -1,22 +1,22 @@
 const queries = {
-  findContentById: `SELECT * FROM content WHERE contentId = $1;`,
-  createNewContent: `INSERT INTO content (title, description, fileUrl, creatorId, price, sold, buyerId)
+  findContentById: `SELECT * FROM content WHERE content_id = $1;`,
+  createNewContent: `INSERT INTO content (title, description, file_url, creator_id, price, sold, buyer_id)
   VALUES ($1, $2, $3, $4, $5, $6, $7)
-  RETURNING contentId;`,
+  RETURNING content_id;`,
   updateContentById: `UPDATE content
-  SET title = $1, description = $2, fileUrl = $3, creatorId = $4, price = $5, sold = $6, buyerId = $7
-  WHERE contentId = $8;`,
-  deleteContentById: `DELETE FROM content WHERE contentId = $1;`,
+  SET title = $1, description = $2, file_url = $3, price = $4, creator_id =$5
+  WHERE content_id = $6;`,
+  deleteContentById: `DELETE FROM content WHERE content_id = $1;`,
   findAllCreators: `SELECT 
   creator.name,
-  creator.creatorId, 
+  creator.creator_id, 
   creator.bio, 
-  creator.profileImage, 
+  creator.profile_image, 
   json_agg(
     json_build_object(
       'title', content.title, 
-      'fileUrl', content.fileUrl,
-      'contentId', content.contentId,
+      'file_url', content.file_url,
+      'content_id', content.content_id,
       'description', content.description,
       'price', content.price,
       'sold', content.sold
@@ -27,14 +27,14 @@ FROM
 LEFT JOIN 
   content 
 ON 
-  creator.creatorId = content.creatorId
+  creator.creator_id = content.creator_id
 GROUP BY 
-  creator.creatorId;
+  creator.creator_id;
 `,
-  createNewCreator: `INSERT INTO creator (username, name, email, password, profileImage, bio, coverImage)
+  createNewCreator: `INSERT INTO creator (username, name, email, password, profile_image, bio, cover_image)
   VALUES ($1, $2, $3, $4, $5, $6, $7);`,
-  findCreatorById: `SELECT * FROM creator WHERE creatorId = $1;`,
-  findAllContentByCreatorId: `SELECT * FROM content WHERE creatorId = $1;`,
+  findCreatorById: `SELECT * FROM creator WHERE creator_id = $1;`,
+  findAllContentBycreator_id: `SELECT * FROM content WHERE creator_id = $1;`,
   createNewBuyer: null,
 };
 
