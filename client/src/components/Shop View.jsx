@@ -2,11 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import BuyNowButton from "./Buy Now Button";
 import EditContent from "./Edit Content button"
+import NewContentButton from "./New Content Button"
 
 const ShopView = ({isCreatorView}) => {
   const [creatorData, setCreatorData] = useState({});
   const { creator_id } = useParams();
-  console.log(creator_id)
   useEffect(() => {
     fetch(`/creator/${creator_id}`)
       .then((response) => {
@@ -24,10 +24,6 @@ const ShopView = ({isCreatorView}) => {
   }, [creator_id]);
   
 
-  useEffect(() => {
-    console.log(creatorData.profile_image);
-  }, [creatorData]);
-
   return (
     <div className="creator-shop">
       <div className="creator-info">
@@ -40,6 +36,10 @@ const ShopView = ({isCreatorView}) => {
           <h2 className="creator-name">{creatorData.name}'s Shop</h2>
           <p className="creator-bio">{creatorData.bio}</p>
         </div>
+        {isCreatorView === true ? (
+        <div className="new-content-button">
+          <NewContentButton creator_id={creator_id}/>
+        </div>):(null)}
       </div>
       <h3 className="content-title">Content Created:</h3>
       <div className="content-list">

@@ -1,6 +1,6 @@
 const queries = {
   findContentById: `SELECT * FROM content WHERE content_id = $1;`,
-  createNewContent: `INSERT INTO content (title, description, file_url, creator_id, price, sold, buyer_id)
+  createNewContent: `INSERT INTO content (title, description, file_url, price, sold, buyer_id, creator_id)
   VALUES ($1, $2, $3, $4, $5, $6, $7)
   RETURNING content_id;`,
   updateContentById: `UPDATE content

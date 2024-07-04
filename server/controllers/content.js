@@ -38,18 +38,18 @@ router.get('/:id', async (req, res)=>{
 
 //Create New Content:
 
-router.post("/new", async (req, res) => {
-  const { title, description, file_url, creator_id, price, sold, buyerId } = req.body;
+router.post("/new/:creator_id", async (req, res) => {
+  const { title, description, file_url, price, sold, buyer_id, creator_id } = req.body;
 
   try {
     const newContentQuery = await pool.query(queries.createNewContent, [
       title,
       description,
       file_url,
-      creator_id,
       price || 0.0,
       sold || false,
-      buyerId || null
+      buyer_id || null,
+      creator_id
     ]);
   
     res.json({

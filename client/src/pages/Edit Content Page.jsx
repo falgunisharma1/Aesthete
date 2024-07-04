@@ -31,12 +31,13 @@ const UpdateContentForm = () => {
   }, [content_id]);
 
   const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
+    const { name, value } = e.target;
     setContentData({
       ...contentData,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: value,
     });
   };
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();

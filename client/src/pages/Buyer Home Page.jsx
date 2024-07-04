@@ -22,7 +22,7 @@ const BuyerHomePage = () => {
         <p>Loading...</p>
       ) : (
         backendData.map((user, i) => (
-          <Link to={`/shop/${user.creator_id}`} key={i} className="creator_list">
+          <Link to={`/myshop/${user.creator_id}`} key={i} className="creator_list">
            
             <div className="creator_info">
               <img className="creators_images" src={user.profile_image} alt={`${user.name}'s profile`} />

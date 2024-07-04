@@ -3,9 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 const EditContent = ({ content_id }) => {
   const navigate = useNavigate();
-  console.log(content_id)
   const handleEdit = () => {
-    navigate(`/shop/update-content/${content_id}`);
+    navigate(`/myshop/update-content/${content_id}`);
   };
 
   return (

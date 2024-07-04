@@ -10,6 +10,7 @@ import BuyNowButton from "./components/Buy Now Button"
 import CreatorShopView from "./pages/Creator Shop View"
 import Cart from "./pages/Cart"
 import UpdateContentForm from "./pages/Edit Content Page"
+import NewContentForm from "./pages/New Content form"
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
           <Route path="/myshop/:creator_id" element={<CreatorShopView />} />
           <Route path="/shop/:creator_id" element={<BuyerShopView/>}/>
           <Route path="/mycart" element={<Cart/>}/>
-          <Route path="/shop/update-content/:content_id" element={<UpdateContentForm/>}/>
+          <Route path="/myshop/update-content/:content_id" element={<UpdateContentForm/>}/>
+          <Route path="/myshop/new/:creator_id" element={<NewContentForm/>}/>
         </Routes>
       </div>
     </BrowserRouter>
