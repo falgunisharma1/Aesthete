@@ -5,6 +5,7 @@ const pool = require("./database.js");
 
 
 
+
 app.use(express.json());
 app.use(cors());
 const bcrypt = require('bcryptjs');

@@ -8,7 +8,7 @@ const EditContent = ({ content_id }) => {
   };
 
   return (
-    <button onClick={handleEdit}>Edit</button>
+    <button className="edit-button" onClick={handleEdit}>Edit Content</button>
   );
 };
 

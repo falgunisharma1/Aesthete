@@ -11,6 +11,7 @@ import CreatorShopView from "./pages/Creator Shop View"
 import Cart from "./pages/Cart"
 import UpdateContentForm from "./pages/Edit Content Page"
 import NewContentForm from "./pages/New Content form"
+import Login from "./components/Login"
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
           <Route path="/mycart" element={<Cart/>}/>
           <Route path="/myshop/update-content/:content_id" element={<UpdateContentForm/>}/>
           <Route path="/myshop/new/:creator_id" element={<NewContentForm/>}/>
+          <Route path="/login" element={<Login/>}/>
         </Routes>
       </div>
     </BrowserRouter>

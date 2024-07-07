@@ -8,10 +8,10 @@ const queries = {
   WHERE content_id = $6;`,
   deleteContentById: `DELETE FROM content WHERE content_id = $1;`,
   findAllCreators: `SELECT 
-  creator.name,
-  creator.creator_id, 
-  creator.bio, 
-  creator.profile_image, 
+  aesthete_user.name AS name,
+  creator.creator_id AS creator_id, 
+  creator.bio AS bio, 
+  creator.profile_image AS profile_image, 
   json_agg(
     json_build_object(
       'title', content.title, 
@@ -25,15 +25,31 @@ const queries = {
 FROM 
   creator
 LEFT JOIN 
-  content 
-ON 
-  creator.creator_id = content.creator_id
+  aesthete_user ON creator.user_id = aesthete_user.user_id
+LEFT JOIN 
+  content ON creator.creator_id = content.creator_id
 GROUP BY 
-  creator.creator_id;
+  creator.creator_id, aesthete_user.name, creator.bio, creator.profile_image;
+
 `,
   createNewCreator: `INSERT INTO creator (username, name, email, password, profile_image, bio, cover_image)
   VALUES ($1, $2, $3, $4, $5, $6, $7);`,
-  findCreatorById: `SELECT * FROM creator WHERE creator_id = $1;`,
+  findCreatorById: `SELECT 
+  creator.creator_id AS creator_id,
+  creator.profile_image AS profile_image,
+  creator.cover_image AS cover_image,
+  creator.bio AS bio,
+  aesthete_user.user_id AS user_id,
+  aesthete_user.username AS username,
+  aesthete_user.name AS name,
+  aesthete_user.email AS email
+FROM 
+  creator
+INNER JOIN 
+  aesthete_user ON creator.user_id = aesthete_user.user_id
+WHERE 
+  creator.creator_id = $1;
+`,
   findAllContentBycreator_id: `SELECT * FROM content WHERE creator_id = $1;`,
   createNewBuyer: null,
 };

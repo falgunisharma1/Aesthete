@@ -91,7 +91,7 @@ router.put('/update/:id', async (req, res)=>{
 
 //Delete content
 
-router.delete('/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
   const content_id = req.params.id;
 
   try {

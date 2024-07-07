@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import BuyNowButton from "./Buy Now Button";
 import EditContent from "./Edit Content button"
 import NewContentButton from "./New Content Button"
+import DeleteButton from "./Delete Content Button"
 
 const ShopView = ({isCreatorView}) => {
   const [creatorData, setCreatorData] = useState({});
@@ -55,18 +56,20 @@ const ShopView = ({isCreatorView}) => {
                 <p className="content-title">{contentItem.title}</p>
                 <p className="content-description">Description: {contentItem.description}</p>
                 <p className="content-price">Price: ${contentItem.price}</p>
+                <div className="available-heading">
                 {contentItem.sold === false ? (
-                  <button>Available</button>
+                  <h3>Available</h3>
                 ) : (
                   <button>Sold</button>
                 )}
+                </div>
                 
                   {isCreatorView === true ? (
-                    <div>
+                    <div className="creator-edit-delete-buttons">
                     <EditContent content_id={contentItem.content_id}/>
-                    <button>Delete</button>
+                    <DeleteButton content_id={contentItem.content_id} creator_id={contentItem.creator_id}/>
                     </div>
-                  ):(<BuyNowButton/>)}
+                  ):(<BuyNowButton className="buy-now-button"/>)}
                 
                 
                 
