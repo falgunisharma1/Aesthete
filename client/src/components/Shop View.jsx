@@ -10,7 +10,7 @@ const ShopView = ({isCreatorView}) => {
   const { creator_id } = useParams();
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
-    fetch(`${backendUrl}/creator/${creator_id}`)
+    fetch(`${backendUrl}creator/${creator_id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

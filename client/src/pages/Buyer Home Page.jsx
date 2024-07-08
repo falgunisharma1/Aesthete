@@ -7,7 +7,7 @@ const BuyerHomePage = () => {
   
 
   useEffect(() => {
-    fetch(`${backendUrl}/creator/all`)
+    fetch(`${backendUrl}creator/all`)
       .then((response) => response.json())
       .then((data) => {
         setBackendData(data);

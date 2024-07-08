@@ -15,7 +15,7 @@ const UpdateContentForm = () => {
   });
 
   useEffect(() => {
-    fetch(`${backendUrl}/content/${content_id}`)
+    fetch(`${backendUrl}content/${content_id}`)
       .then((response) => response.json())
       .then((data) => {
         setContentData({
@@ -44,7 +44,7 @@ const UpdateContentForm = () => {
     e.preventDefault();
     console.log(contentData);
 
-    fetch(`${backendUrl}/content/update/${content_id}`, {
+    fetch(`${backendUrl}content/update/${content_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
