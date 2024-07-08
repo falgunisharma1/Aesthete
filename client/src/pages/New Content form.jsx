@@ -5,6 +5,8 @@ import { useNavigate, useParams } from "react-router-dom";
 const NewContentForm = () => {
   const { creator_id } = useParams();
   const navigate = useNavigate();
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+
 
   const [newContentData, setNewContentData] = useState({
     title: "",
@@ -18,7 +20,7 @@ const NewContentForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`/content/new/${creator_id}`, {
+    fetch(`${backendUrl}/content/new/${creator_id}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

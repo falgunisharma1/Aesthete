@@ -4,7 +4,6 @@ import AppName from "./components/AppName";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import BuyerLoginSignup from "./pages/Buyer Log Sign";
 import BuyerHomePage from "./pages/Buyer Home Page";
-import ShopView from "./components/Shop View";
 import BuyerShopView from "./pages/Buyer Shop View"
 import BuyNowButton from "./components/Buy Now Button"
 import CreatorShopView from "./pages/Creator Shop View"
@@ -13,7 +12,12 @@ import UpdateContentForm from "./pages/Edit Content Page"
 import NewContentForm from "./pages/New Content form"
 import Login from "./components/Login"
 
+
+
+
+
 function App() {
+  
   return (
     <BrowserRouter>
       <div>

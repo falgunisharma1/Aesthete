@@ -8,8 +8,9 @@ import DeleteButton from "./Delete Content Button"
 const ShopView = ({isCreatorView}) => {
   const [creatorData, setCreatorData] = useState({});
   const { creator_id } = useParams();
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
   useEffect(() => {
-    fetch(`/creator/${creator_id}`)
+    fetch(`${backendUrl}/creator/${creator_id}`)
       .then((response) => {
         if (!response.ok) {
           throw new Error('Network response was not ok');

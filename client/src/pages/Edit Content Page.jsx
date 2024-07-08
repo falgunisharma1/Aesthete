@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 const UpdateContentForm = () => {
   const { content_id } = useParams();
   const navigate = useNavigate();
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const [contentData, setContentData] = useState({
     title: "",
@@ -14,7 +15,7 @@ const UpdateContentForm = () => {
   });
 
   useEffect(() => {
-    fetch(`/content/${content_id}`)
+    fetch(`${backendUrl}/content/${content_id}`)
       .then((response) => response.json())
       .then((data) => {
         setContentData({
@@ -43,7 +44,7 @@ const UpdateContentForm = () => {
     e.preventDefault();
     console.log(contentData);
 
-    fetch(`/content/update/${content_id}`, {
+    fetch(`${backendUrl}/content/update/${content_id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

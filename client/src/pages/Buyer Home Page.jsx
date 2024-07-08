@@ -3,9 +3,11 @@ import { Link } from "react-router-dom";
 
 const BuyerHomePage = () => {
   const [backendData, setBackendData] = useState([]);
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
+  
 
   useEffect(() => {
-    fetch("/creator/all")
+    fetch(`${backendUrl}/creator/all`)
       .then((response) => response.json())
       .then((data) => {
         setBackendData(data);
@@ -14,6 +16,8 @@ const BuyerHomePage = () => {
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
+
+      console.log(backendUrl)
   }, []);
 
   return (
