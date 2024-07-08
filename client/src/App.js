@@ -24,7 +24,7 @@ function App() {
         <AppName />
         <Routes>
           <Route path="/login-signup" element={<BuyerLoginSignup />} />
-          <Route path="/everything" element={<BuyerHomePage />} />
+          <Route path="/" element={<BuyerHomePage />} />
           <Route path="/myshop/:creator_id" element={<CreatorShopView />} />
           <Route path="/shop/:creator_id" element={<BuyerShopView/>}/>
           <Route path="/mycart" element={<Cart/>}/>
