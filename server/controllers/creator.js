@@ -15,6 +15,7 @@ router.get("/all", async (req, res) => {
     }
 
     res.json(creatorResult.rows);
+    console.log(creatorResult.rows)
   } catch (err) {
     console.error('Error fetching creators:', err);
     res.status(500).send('Server Error');
@@ -60,6 +61,6 @@ router.get('/:id', async (req, res) => {
 });
 
 
-//POST route for updating the creator info 
+
 
 module.exports = router;

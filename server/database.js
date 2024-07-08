@@ -1,29 +1,14 @@
 const { Pool } = require("pg");
+require('dotenv').config();
 
 const pool = new Pool({
-  user: "falgunisharma",
-  password: "harsh",
-  host: "localhost",
+  connectionString: process.env.DATABASE_URL,
+  ssl: {rejectUnauthorized: false},
+  host: "c6sfjnr30ch74e.cluster-czrs8kj4isg7.us-east-1.rds.amazonaws.com",
+  user: "ude0j2j3i2l58j",
+  password: "p1150c3eb427fc70afc5f5763d8bb3cf62428f2a62f0a5eea04ef9735e0269ec9",
   port: 5432,
-  database: "aesthete"
+  database: "d7snnsguvk94aq"
 });
-
-// const createTblQry = `CREATE TABLE buyers (
-//   buyerId SERIAL PRIMARY KEY,
-//   username VARCHAR(100) NOT NULL UNIQUE,
-//   name VARCHAR(100) NOT NULL,
-//   email VARCHAR(100) NOT NULL UNIQUE,
-//   password VARCHAR(500) NOT NULL
-// );`
-
-// pool
-//   .query(createTblQry)
-//   .then((response) => {
-//     console.log(response);
-//     console.log("buyer table created");
-//   })
-//   .catch((err) => {
-//     console.log(err);
-//   });
 
 module.exports = pool;
