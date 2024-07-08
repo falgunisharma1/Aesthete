@@ -7,7 +7,6 @@ const NewContentForm = () => {
   const navigate = useNavigate();
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-
   const [newContentData, setNewContentData] = useState({
     title: "",
     description: "",
@@ -49,7 +48,6 @@ const NewContentForm = () => {
       [name]: value,
     });
   };
-
 
   return (
     <div className="new-content-form">
