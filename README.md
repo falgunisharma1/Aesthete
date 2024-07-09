@@ -25,7 +25,7 @@ As a Creator,
 
 
 <h2>Entity Relationship</h2>
-![Screen Shot 2024-07-09 at 11 46 46 AM](https://github.com/falgunisharma1/Aesthete/assets/155585711/bb6c0078-1e28-4068-b989-09e2eadc58e1)
+[Screen Shot 2024-07-09 at 11 46 46 AM](https://github.com/falgunisharma1/Aesthete/assets/155585711/bb6c0078-1e28-4068-b989-09e2eadc58e1)
 
 
 
