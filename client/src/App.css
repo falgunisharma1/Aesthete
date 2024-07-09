@@ -71,7 +71,7 @@ body {
 
 .sign-up-outside {
   background: url("../public/bg-signup-aesthete.jpeg") no-repeat center center
-    fixed; /* Ensure the image covers the entire background */
+    fixed; 
   background-size: cover;
   display: flex;
   justify-content: center;
@@ -79,15 +79,6 @@ body {
   align-items: center;
   margin-top: -2%;
 }
-/* 
-.signup-outside{
-  background: url("../public/bg-signup-aesthete.jpeg") no-repeat center center fixed; 
-  background-size: cover;
-  display: flex;
-  min-height: 100vh;
-  align-items: center;
-  padding-bottom: -100px;
-} */
 
 .sign-up {
   display: flex;
@@ -101,8 +92,7 @@ body {
   border-radius: 10px;
   background-color: rgba(30, 30, 30, 0.8);
   backdrop-filter: blur(10px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds a shadow for depth */
-}
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
 
 .sign-up h2 {
   text-align: center;
@@ -125,13 +115,13 @@ body {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #ddd; /* Light text color for better readability */
+  color: #ddd; 
 }
 
 .sign-up input,
 .sign-up textarea {
   width: 80%;
-  padding: 10px; /* Increased padding for better usability */
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-size: 14px;
@@ -140,13 +130,13 @@ body {
     255,
     255,
     0.2
-  ); /* Semi-transparent input background */
-  color: #fff; /* White text for inputs */
+  ); 
+  color: #fff; 
 }
 
 .sign-up textarea {
   resize: vertical;
-  height: 60px; /* Adjusted height for better usability */
+  height: 60px; 
 }
 
 .sign-up button {
@@ -164,7 +154,7 @@ body {
 
 .sign-up button:hover {
   background-color: #0056b3;
-  color: #ffffff; /* Change text color on hover for better contrast */
+  color: #ffffff; 
 }
 
 .error-message-createUser {
@@ -177,10 +167,10 @@ body {
 .login {
   display: flex;
   flex-direction: column;
-  width: 40%; /* Adjusted width for more openness */
+  width: 40%; 
   max-height: 80%;
   margin: 0 auto;
-  margin-top: -10%; /* Adjusted margin for positioning */
+  margin-top: -10%; 
   padding: 20px;
   border: 1px solid rgba(78, 77, 77, 0.5);
   border-radius: 10px;
@@ -195,20 +185,113 @@ body {
   color: #ffffff;
 }
 
+
+/* Update and new form */
 .form-group {
   margin-bottom: 15px;
+}
+/* Common container styles */
+.new-content-form, .update-content-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-height: 80%;
+  margin: 0 auto;
+  margin-top: 3%;
+  padding: 20px;
+  border: 1px solid rgba(78, 77, 77, 0.5);
+  border-radius: 10px;
+  background-color: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); }
+
+.new-content-form, .update-content-form h2{
+  text-align: left;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10%;
+}
+
+.form-container form div {
+  margin-bottom: 15px;
+}
+
+.form-container label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ddd; 
+}
+
+.form-container input,
+.form-container textarea {
+  width: 80%;
+  padding: 10px; 
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); 
+  color: #fff; 
+}
+
+.form-container textarea {
+  resize: vertical;
+  height: 60px; 
+}
+
+.content-submit-button {
+  padding: 10px;
+  width: 94%;
+  margin-top: 2%;
+  border: none;
+  border-radius: 5px;
+  background-color: #7cb1ea;
+  color: rgb(11, 11, 11);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.form-container button:hover {
+  background-color: #0056b3;
+  color: #ffffff; 
+}
+
+
+
+.error-message-createUser {
+  margin-top: 20px;
+  color: red;
+  text-align: center;
+}
+
+.error-message {
+  margin-top: 20px;
+  color: red;
+  text-align: center;
 }
 
 label {
   display: block;
   font-weight: bold;
   margin-bottom: 5px;
-  color: #ddd; /* Light text color for better readability */
+  color: #ddd; 
 }
 
 input,
 textarea {
-  width: 90%; /* Stretch input fields to full width */
+  width: 90%; 
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -218,13 +301,13 @@ textarea {
     255,
     255,
     0.2
-  ); /* Semi-transparent input background */
-  color: #fff; /* White text for inputs */
+  ); 
+  color: #fff; 
 }
 
 textarea {
   resize: vertical;
-  height: 60px; /* Adjusted height for better usability */
+  height: 60px; 
 }
 
 .toggle {
@@ -256,7 +339,7 @@ textarea {
 
 button:hover {
   background-color: #0056b3;
-  color: #ffffff; /* Change text color on hover for better contrast */
+  color: #ffffff; 
 }
 
 .error-message {
@@ -281,7 +364,7 @@ button:hover {
 
 .toggle-container {
   position: relative;
-  width: 200px; /* Adjust width as needed */
+  width: 200px; 
 }
 
 .toggle {
@@ -292,20 +375,20 @@ button:hover {
   padding: 8px;
   border: none;
   border-radius: 20px;
-  background-color: #dddddd00; /* Background color of the switch */
-  color: #444; /* Text color of the switch */
+  background-color: #dddddd00; 
+  color: #444; 
   cursor: pointer;
   transition: background-color 0.3s, color 0.3s;
 }
 
 .toggle.left {
-  background-color: #165e27; /* Background color for left (Buyer) */
-  color: white; /* Text color for left (Buyer) */
+  background-color: #165e27; 
+  color: white; 
 }
 
 .toggle.right {
-  background-color: #034790; /* Background color for right (Creator) */
-  color: white; /* Text color for right (Creator) */
+  background-color: #034790; 
+  color: white;
 }
 
 .option1 {
@@ -331,7 +414,7 @@ button:hover {
   width: 50%;
   height: 100%;
   border-radius: 20px;
-  background-color: #fff; /* Indicator color */
+  background-color: #fff; 
   transition: left 0.3s;
 }
 
@@ -347,14 +430,15 @@ button:hover {
   align-items: center;
   justify-content: center;
 }
+
 .creator_list {
-  width: 50%;
+  width: 70%;
   display: flex;
   flex-direction: column;
   border: 1px solid #ddd;
   border-radius: 8px;
-  padding: 16px;
-  margin: 16px 0;
+  padding: 24px; 
+  margin: 24px 0; 
   background-color: #f9f9f9;
 }
 
@@ -362,21 +446,21 @@ button:hover {
 .creator_info {
   display: flex;
   align-items: center;
-  margin-bottom: 16px;
+  margin-bottom: 24px; 
 }
 
 /* Style for the creator's profile image */
 .creators_images {
-  width: 50px;
-  height: 50px;
+  width: 80px; 
+  height: 80px; 
   border-radius: 50%;
-  margin-right: 16px;
-  object-fit: cover; /* Ensures the image covers the area without stretching */
+  margin-right: 24px; 
+  object-fit: cover;
 }
 
 /* Style for the creator's name */
 .creator_name {
-  font-size: 18px;
+  font-size: 24px; /* Increased font size */
   font-weight: bold;
   margin: 0;
 }
@@ -384,7 +468,7 @@ button:hover {
 /* Style for the creator's bio */
 .creator_bio {
   margin: 8px 0 0 0;
-  font-size: 14px;
+  font-size: 18px; /* Increased font size */
   color: #666;
 }
 
@@ -392,17 +476,21 @@ button:hover {
 .creator_content_container {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 30px; /* Increased gap */
+  justify-content: center;
+
 }
 
 /* Style for the content images */
 .creator_content {
-  width: 100px;
-  height: 100px;
-  object-fit: cover; /* Ensures the image covers the area without stretching */
-  border-radius: 4px;
+  width: 150px; 
+  height: 150px; 
+  object-fit: cover; 
+  border-radius: 8px;
 }
 
+
+/* shop view */
 /* Container for the entire creator shop */
 .creator-shop {
   max-width: 1200px;
@@ -520,6 +608,8 @@ button:hover {
   display: flex;
   justify-content: flex-end;
 }
+
+
 /* Link styling for the application name */
 .app_name_link {
   text-decoration: none;
@@ -529,14 +619,10 @@ button:hover {
 }
 
 .app_name_link:hover {
-  color: #007bff; /* Change to your desired hover color */
+  color: #007bff; 
   color: #ffffff;
 }
 
-.update-content-form {
-  background-color: #b0afaf;
-  color: black;
-}
 
 .creator-edit-delete-buttons {
   display: flex;
@@ -544,9 +630,9 @@ button:hover {
   justify-content: space-between;
   background-color: #bebebe57;
   padding: 3%;
-  margin-bottom: -20px; /* Remove bottom margin */
-  margin-left: -20px; /* Remove left margin */
-  margin-right: -20px; /* Remove right margin */
+  margin-bottom: -20px; 
+  margin-left: -20px;
+  margin-right: -20px;
 }
 
 .delete-button {
@@ -581,6 +667,29 @@ button:hover {
 /* Style for the Available heading */
 .available-heading {
   font-size: 1.2em;
-  color: #28a745; /* Green color for available */
+  color: #28a745; 
   margin-top: 10px;
+}
+
+.outside-container-content-form {
+  background: url('../public/final\ bg\ abstract.jpeg') no-repeat center center fixed;
+  background-size: cover; 
+  width: 100%;
+  height: 100%; 
+  position: absolute; 
+}
+
+.new-content-button {
+  color: white;
+  background-color: #0d3d18;
+  border: none; 
+  padding: 10px 16px; 
+  border-radius: 4px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, color 0.3s; 
+}
+
+.new-content-button:hover {
+  background-color: #0056b3;
+  color: #ffffff;
 }

@@ -65,6 +65,7 @@ const UpdateContentForm = () => {
   };
 
   return (
+    <div className="outside-container-content-form">
     <div className="update-content-form">
       <h2>Update Content</h2>
       <form onSubmit={handleSubmit}>
@@ -111,8 +112,9 @@ const UpdateContentForm = () => {
           />
         </div>
 
-        <button type="submit">Update Content</button>
+        <button className="content-submit-button" type="submit">Update Content</button>
       </form>
+    </div>
     </div>
   );
 };

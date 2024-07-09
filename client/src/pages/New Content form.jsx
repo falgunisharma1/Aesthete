@@ -50,6 +50,7 @@ const NewContentForm = () => {
   };
 
   return (
+    <div className="outside-container-content-form">
     <div className="new-content-form">
       <h2>Add New Content</h2>
       <form onSubmit={handleSubmit}>
@@ -96,8 +97,9 @@ const NewContentForm = () => {
           />
         </div>
 
-        <button type="submit">Add New Content</button>
+        <button className="content-submit-button" type="submit">Add New Content</button>
       </form>
+    </div>
     </div>
   );
 };

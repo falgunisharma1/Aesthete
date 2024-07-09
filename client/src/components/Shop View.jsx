@@ -39,7 +39,7 @@ const ShopView = ({isCreatorView}) => {
           <p className="creator-bio">{creatorData.bio}</p>
         </div>
         {isCreatorView === true ? (
-        <div className="new-content-button">
+        <div >
           <NewContentButton creator_id={creator_id}/>
         </div>):(null)}
       </div>

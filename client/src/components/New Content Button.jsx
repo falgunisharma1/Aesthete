@@ -8,7 +8,7 @@ const NewContentButton = ({ creator_id }) => {
   };
 
   return (
-    <button onClick={handleNew}>Add New Content</button>
+    <button className="new-content-button" onClick={handleNew}>Add New Content</button>
   );
 };
 
