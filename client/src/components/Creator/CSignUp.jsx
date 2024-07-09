@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // Correct import
+import { useNavigate } from "react-router-dom"; 
+import { Link } from "react-router-dom";
+import ToggleSwitch from "../ToggleSwitch";
 
 const CreatorSignUp = () => {
   const [newCreatorData, setNewCreatorData] = useState({
@@ -17,6 +19,8 @@ const CreatorSignUp = () => {
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const navigate = useNavigate();
+  const isLoginPage = false;
+  const isBuyerPage = false;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -34,14 +38,17 @@ const CreatorSignUp = () => {
       });
 
       const data = await response.json();
+      console.log(data)
 
-      if (data.username) {
+      if (data.user.username) {
         setNewCreatorData(data);
-        window.sessionStorage["userId"] = JSON.stringify({
+        window.sessionStorage.setItem("userId", JSON.stringify({
           userId: data.user.user_id,
+          buyerId: data.user.buyer_id,
           creatorId: data.user.creator_id,
-        });
-        navigate(`/myshop/${data.creator_id}`);
+        }));
+        console.log( window.sessionStorage)
+        navigate(`/myshop/${data.user.creator_id}`);
       } else {
         setErrorMessage(data.message || "An error occurred");
       }
@@ -58,6 +65,7 @@ const CreatorSignUp = () => {
 
   return (
     <div className="sign-up-outside">
+       <ToggleSwitch isBuyerPage={isBuyerPage} isLoginPage={isLoginPage} />
       <div className="sign-up">
         <h2>Sign-Up</h2>
         <form onSubmit={handleSubmit}>
@@ -144,10 +152,14 @@ const CreatorSignUp = () => {
               onChange={handleInput}
             />
           </div>
-          <button type="submit">Sign-Up</button>
+          <button type="submit" className="submit">Sign-Up</button>
         </form>
+        <Link to="/creator/login" className="login-link">
+              Already Signed Up?
+            </Link>
         <div className="error-message-createUser">
           <p>{errorMessage}</p>
+  
         </div>
       </div>
     </div>

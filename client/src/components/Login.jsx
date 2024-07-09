@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
   const [loginData, setLoginData] = useState({
@@ -64,9 +65,9 @@ const Login = (props) => {
     <div className="login-outside">
       <div className="login">
         <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form-group">
           <div>
-            <label htmlFor="username">
+            <label htmlFor="username" className="label-username-password-login">
               <strong>Username</strong>
             </label>
             <input
@@ -78,7 +79,7 @@ const Login = (props) => {
             />
           </div>
           <div>
-            <label htmlFor="password">
+            <label htmlFor="password" className="label-username-password-login">
               <strong>Password</strong>
             </label>
             <input
@@ -89,14 +90,27 @@ const Login = (props) => {
               onChange={handleInput}
             />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit" >Login</button>
+          {props.isBuyer ? (
+            <Link to="/buyer/signup" className="create-account-link">
+              Create an Account
+            </Link>
+          ) : (
+            <Link to="/creator/signup" className="create-account-link">
+              Create an Account
+            </Link>
+          )}
         </form>
-        <div className="error-message-login">
-          <p>{errorMessage}</p>
-        </div>
+        {errorMessage && (
+          <div className="error-message-login">
+            <p>{errorMessage}</p>
+          </div>
+        )}
       </div>
     </div>
   );
 };
+
+
 
 export default Login;

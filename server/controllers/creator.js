@@ -46,7 +46,6 @@ router.get('/:id', async (req, res) => {
     const content = contentResult.rows;
 
     res.json({
-      
         username: creator.username,
         name: creator.name,
         email: creator.email,
@@ -91,7 +90,7 @@ router.post('/signup', async (req, res) => {
         // Return the successful response
         return res.status(201).send({
           message: 'Creator account created successfully',
-          creator: {
+          user: {
             creator_id: creatorId,
             username: username,
             name: name,

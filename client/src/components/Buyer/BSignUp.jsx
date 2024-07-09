@@ -1,6 +1,8 @@
 import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import ToggleSwitch from "../ToggleSwitch";
 
 const BSignUp = () => {
   const [newBuyerData, setNewBuyerData] = useState({
@@ -15,6 +17,9 @@ const BSignUp = () => {
   const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
   const navigate = useNavigate();
+
+  const isLoginPage = false;
+  const isBuyerPage = true;
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -56,7 +61,8 @@ const BSignUp = () => {
   };
 
   return (
-    <div className="buyer-signup-outside">
+    <div className="sign-up-outside">
+      <ToggleSwitch isBuyerPage={isBuyerPage} isLoginPage={isLoginPage} />
       <div className="sign-up">
         <h2>Sign-Up</h2>
         <form onSubmit={handleSubmit}>
@@ -110,6 +116,9 @@ const BSignUp = () => {
           </div>
           <button type="submit">Sign-Up</button>
         </form>
+        <Link to="/buyer/login" className="login-link">
+          Already Signed Up?
+        </Link>
         <div className="error-message-createUser">
           <p>{errorMessage}</p>
         </div>

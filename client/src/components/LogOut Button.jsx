@@ -1,17 +1,25 @@
-import { useNavigate } from "react-router-dom"
+import React from "react";
+import { useNavigate } from "react-router-dom";
 
-const LogOutButton = ()=>{
-
+const LogOutButton = () => {
   const navigate = useNavigate();
 
-  const handleLogOut = ()=>{
-    navigate('/buyer/login')
-  }
+  const handleLogOut = () => {
+    const userId = JSON.parse(window.sessionStorage.getItem("userId"));
+    if (userId && userId.buyerId) {
+      navigate("/buyer/login");
+    } else {
+      navigate("/creator/login");
+    }
+    // Clear session storage on logout
+    window.sessionStorage.removeItem("userId");
+  };
 
   return (
-    <button onClick={handleLogOut}>Log-Out</button>
+    <p onClick={handleLogOut} className="logout-button">
+      Sign out
+    </p>
   );
-  
-}
+};
 
-export default LogOutButton
+export default LogOutButton;

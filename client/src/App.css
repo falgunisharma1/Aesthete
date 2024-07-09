@@ -1,11 +1,347 @@
 /* Main container for the creator list */
 
-body{
+body {
   background-color: black;
   color: white;
 }
 
-.buyer_home_page{
+/* Container for AppName and LogOutButton */
+.app_name_container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+  padding: 0 20px;
+}
+
+/* Style for the application name */
+.app_name {
+  font-size: 2.5em;
+  font-weight: bold;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/* Link styling for the application name */
+.app_name_link {
+  text-decoration: none;
+  color: #ffffff;
+  transition: color 0.3s ease;
+}
+
+.app_name_link:hover {
+  color: #007bff;
+}
+
+/* Style for the LogOutButton */
+.logout-button {
+  background-color: #1f5084;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.9em;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.logout-button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.login-outside {
+  background: url("../public/bg-signup-aesthete.jpeg") no-repeat center center
+    fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin-top: -4%;
+}
+
+/* Creator Sign-up page */
+
+.sign-up-outside {
+  background: url("../public/bg-signup-aesthete.jpeg") no-repeat center center
+    fixed; /* Ensure the image covers the entire background */
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -2%;
+}
+/* 
+.signup-outside{
+  background: url("../public/bg-signup-aesthete.jpeg") no-repeat center center fixed; 
+  background-size: cover;
+  display: flex;
+  min-height: 100vh;
+  align-items: center;
+  padding-bottom: -100px;
+} */
+
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-height: 80%;
+  margin: 0 auto;
+  margin-top: 3%;
+  padding: 20px;
+  border: 1px solid rgba(78, 77, 77, 0.5);
+  border-radius: 10px;
+  background-color: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds a shadow for depth */
+}
+
+.sign-up h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.sign-up form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10%;
+}
+
+.sign-up form div {
+  margin-bottom: 15px;
+}
+
+.sign-up label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ddd; /* Light text color for better readability */
+}
+
+.sign-up input,
+.sign-up textarea {
+  width: 80%;
+  padding: 10px; /* Increased padding for better usability */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Semi-transparent input background */
+  color: #fff; /* White text for inputs */
+}
+
+.sign-up textarea {
+  resize: vertical;
+  height: 60px; /* Adjusted height for better usability */
+}
+
+.sign-up button {
+  padding: 10px;
+  width: 83%;
+  margin-top: 2%;
+  border: none;
+  border-radius: 5px;
+  background-color: #7cb1ea;
+  color: rgb(11, 11, 11);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sign-up button:hover {
+  background-color: #0056b3;
+  color: #ffffff; /* Change text color on hover for better contrast */
+}
+
+.error-message-createUser {
+  margin-top: 20px;
+  color: red;
+  text-align: center;
+}
+
+/* Common styles for login and signup pages */
+.login {
+  display: flex;
+  flex-direction: column;
+  width: 40%; /* Adjusted width for more openness */
+  max-height: 80%;
+  margin: 0 auto;
+  margin-top: -10%; /* Adjusted margin for positioning */
+  padding: 20px;
+  border: 1px solid rgba(78, 77, 77, 0.5);
+  border-radius: 10px;
+  background-color: rgba(30, 30, 30, 0.8);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.login h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ddd; /* Light text color for better readability */
+}
+
+input,
+textarea {
+  width: 90%; /* Stretch input fields to full width */
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.2
+  ); /* Semi-transparent input background */
+  color: #fff; /* White text for inputs */
+}
+
+textarea {
+  resize: vertical;
+  height: 60px; /* Adjusted height for better usability */
+}
+
+.toggle {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #28a745;
+  color: white;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  transition: background-color 0.3s;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.login button {
+  padding: 10px;
+  width: 94%;
+  margin-top: 5%;
+  border: none;
+  border-radius: 5px;
+  background-color: #4a86c6;
+  color: White;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #0056b3;
+  color: #ffffff; /* Change text color on hover for better contrast */
+}
+
+.error-message {
+  margin-top: 20px;
+  color: red;
+  text-align: center;
+}
+
+.create-account-link,
+.login-link {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.create-account-link:hover,
+.login-link:hover {
+  text-decoration: underline;
+}
+
+.toggle-container {
+  position: relative;
+  width: 200px; /* Adjust width as needed */
+}
+
+.toggle {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px;
+  border: none;
+  border-radius: 20px;
+  background-color: #dddddd00; /* Background color of the switch */
+  color: #444; /* Text color of the switch */
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.toggle.left {
+  background-color: #165e27; /* Background color for left (Buyer) */
+  color: white; /* Text color for left (Buyer) */
+}
+
+.toggle.right {
+  background-color: #034790; /* Background color for right (Creator) */
+  color: white; /* Text color for right (Creator) */
+}
+
+.option1 {
+  flex: 1;
+  text-align: right;
+}
+
+.option2 {
+  flex: 1;
+  text-align: left;
+}
+
+.options {
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: row;
+}
+
+.indicator {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  border-radius: 20px;
+  background-color: #fff; /* Indicator color */
+  transition: left 0.3s;
+}
+
+.indicator.right {
+  left: 50%;
+}
+
+/* Home page */
+
+.buyer_home_page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -177,23 +513,27 @@ body{
   font-weight: bold;
   text-align: center;
   margin: 20px 0;
-  
+  display: flex;
+  justify-content: center;
 }
-
+.box-logout {
+  display: flex;
+  justify-content: flex-end;
+}
 /* Link styling for the application name */
 .app_name_link {
   text-decoration: none;
   color: #333;
   transition: color 0.3s ease;
-  color:#ddd
+  color: #ddd;
 }
 
 .app_name_link:hover {
   color: #007bff; /* Change to your desired hover color */
-  color:#ffffff
+  color: #ffffff;
 }
 
-.update-content-form{
+.update-content-form {
   background-color: #b0afaf;
   color: black;
 }
@@ -243,177 +583,4 @@ body{
   font-size: 1.2em;
   color: #28a745; /* Green color for available */
   margin-top: 10px;
-}
-
-
-
-.login-form {
-  background: rgb(44, 43, 43);
-  padding: 40px 30px;
-  border-radius: 8px;
-  
-  max-width: 400px;
-  width: 100%;
-  
-}
-
-.login-form-outside {
-  background: url('../public/bg-aesthete.jpeg'); /* Correct path to the image */
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-  margin: -10% 0% -20% 0%;
-  padding: 20px 20px 20px 20px;
-  background-size: cover; /* Ensure the background image covers the whole container */
-  height: 100vh; /* Set height to full viewport height */
-  background-position: center; /* Center the background image */
-}
-
-
-.label-username-password-login{
-  color: White;
-}
-
-.login-form h2 {
-  margin-bottom: 20px;
-  color: #fefefe;
-}
-
-.login-form input {
-  width: calc(100% - 20px);
-  padding: 10px;
-  margin-bottom: 15px;
-  border: 1px solid #232323;
-  border-radius: 4px;
-  box-sizing: border-box;
-  font-size: 16px;
-}
-
-.login-form input:focus {
-  border-color: #3c00ff;
-  outline: none;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
-}
-
-.login-form button {
-  width: 100%;
-  padding: 10px;
-  background: #3a3b6d;
-  border: none;
-  border-radius: 4px;
-  color: white;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s ease;
-}
-
-.login-form button:hover {
-  background: #ccd3d9;
-}
-
-.login-form .error-message-login {
-  margin-top: 15px;
-  color: red;
-  font-size: 14px;
-}
-
-
-
-/* Creator Sign-up page */
-
-.sign-up-outside {
-  background: url("../public/bg-signup-aesthete.jpeg") no-repeat center center fixed; /* Ensure the image covers the entire background */
-  background-size: cover;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-}
-
-.buyer-signup-outside{
-  background: url("../public/bg-signup-aesthete.jpeg") no-repeat center center fixed; 
-  background-size: cover;
-  display: flex;
-  min-height: 100vh;
-  padding-bottom: -100px;
-}
-
-.sign-up {
-  display: flex;
-  flex-direction: column;
-  width: 50%;
-  max-height: 80%;
-  margin: 0 auto;
-  margin-top: 3%;
-  padding: 20px;
-  border: 1px solid rgba(78, 77, 77, 0.5); 
-  border-radius: 10px;
-  background-color: rgba(30, 30, 30, 0.8); 
-  backdrop-filter: blur(10px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds a shadow for depth */
-}
-
-.sign-up h2 {
-  text-align: center;
-  margin-bottom: 20px;
-  color: #ffffff;
-}
-
-.sign-up form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  margin-left: 10%;
-}
-
-.sign-up form div {
-  margin-bottom: 15px;
-}
-
-.sign-up label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #ddd; /* Light text color for better readability */
-}
-
-.sign-up input,
-.sign-up textarea {
-  width: 80%;
-  padding: 10px; /* Increased padding for better usability */
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  font-size: 14px;
-  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent input background */
-  color: #fff; /* White text for inputs */
-}
-
-.sign-up textarea {
-  resize: vertical;
-  height: 60px; /* Adjusted height for better usability */
-}
-
-.sign-up button {
-  padding: 10px;
-  width:83%;
-  margin-top: 2%;
-  border: none;
-  border-radius: 5px;
-  background-color: #7cb1ea;
-  color: rgb(11, 11, 11);
-  font-size: 16px;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.sign-up button:hover {
-  background-color: #0056b3;
-  color: #ffffff; /* Change text color on hover for better contrast */
-}
-
-.error-message-createUser {
-  margin-top: 20px;
-  color: red;
-  text-align: center;
 }
