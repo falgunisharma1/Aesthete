@@ -32,7 +32,8 @@ As a Creator,
 <li>One should be able to create new content listing, update the existing one and delete one when needed. </li>
 
 <h2>Entity Relationship</h2>
-![Entity Relationship Diagram](https://github.com/falgunisharma1/Aesthete/blob/main/client/public/Screen%20Shot%202024-07-09%20at%2011.46.46%20AM.png)
+![Entity Relationship Diagram](https://github.com/falgunisharma1/Aesthete/assets/155585711/1e1a2011-1ad5-4b6a-9f01-6140af606328)
+
 
 <h3>1. Primary Keys and Relationships:</h3>
 <li>Each table has a primary key (creator_id for creator, content_id for content, buyer_id for buyer, and user_id for aesthete_user) .</li>
