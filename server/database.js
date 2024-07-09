@@ -12,12 +12,6 @@ const pool = new Pool({
 });
 
 
-// const pool = new Pool({
-//   user: "falgunisharma",
-//   password: "harsh",
-//   host: "localhost",
-//   port: 5432,
-//   database: "aesthete"
-// });
+
 
 module.exports = pool;

@@ -112,7 +112,7 @@ function logoutHandler() {
 
 
 
-// Apply the middleware to the /all route
+// Get all creator's shop for buyer
 router.get("/all", async (req, res) => {
   if(userSessions);
   try {

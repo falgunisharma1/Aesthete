@@ -5,25 +5,6 @@ const queries = require('../queries');
 const bcrypt = require("bcrypt");
 
 
-// //GET route to retrieve all the creators
-
-// router.get("/all", async (req, res) => {
-//   try {
-//     const creatorResult = await pool.query(queries.findAllCreators);
-    
-//     if (creatorResult.rows.length === 0) {
-//       return res.status(404).json({ message: 'No Creators found' });
-//     }
-
-//     res.json(creatorResult.rows);
-//     console.log(creatorResult.rows)
-//   } catch (err) {
-//     console.error('Error fetching creators:', err);
-//     res.status(500).send('Server Error');
-//   }
-
-// });
-
 
 // GET route to retrieve a creator by ID and list all their content
 router.get('/:id', async (req, res) => {

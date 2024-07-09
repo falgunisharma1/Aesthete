@@ -5,6 +5,9 @@ const pool = require("./database.js");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const bodyParser = require("body-parser");
+const bcrypt = require("bcryptjs");
+
+
 require("dotenv").config();
 require("./myMiddleware.js")(app);
 app.use(express.json());
@@ -21,9 +24,7 @@ app.use(
 
 const port = process.env.PORT || 5000;
 
-// process.env.PORT ||
 
-const bcrypt = require("bcryptjs");
 
 // =======================================
 //              CONTROLLERS
