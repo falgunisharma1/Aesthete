@@ -1,6 +1,11 @@
 # Aesthete
 
+
+App link: https://aesthete1.netlify.app/buyer/login
+
+
 Technology used:
+
 <h3 align="left">Connect with me:</h3>
 <p align="left">
 </p>
@@ -17,20 +22,19 @@ Access the wireframe from initial stages of this project: https://www.figma.com/
 In this specific scenario there are two users, buyer and creator.
 
 As a buyer,
+
 <li>One should be able to sign-in, sign-up and log out.</li>
 <li>One should be able to view a list of all the shops from different creators</li>
 <li>One should be able to view specific shop and be able to go to my cart after choosing an art to buy. </li>
 
-
 As a Creator,
+
 <li>One should be able to sign-in, sign-up (setup a shop) and log out.</li>
 <li>One should be able to view my shop</li>
 <li>One should be able to create new content listing, update the existing one and delete one when needed. </li>
 
-
 <h2>Entity Relationship</h2>
-![Entity Relationship Diagram](https://github.com/falgunisharma1/Aesthete/assets/155585711/bb6c0078-1e28-4068-b989-09e2eadc58e1)
-
+![Entity Relationship Diagram](/client/public/Screen%20Shot%202024-07-09%20at%2011.46.46%20AM.png)
 
 <h3>1. Primary Keys and Relationships:</h3>
 <li>Each table has a primary key (creator_id for creator, content_id for content, buyer_id for buyer, and user_id for aesthete_user) .</li>
@@ -49,7 +53,6 @@ As a Creator,
 <h3>5. Buyer-Content Relationship:</h3>
 <li>The buyer table establishes a relationship between buyers and users (user_id), enabling the association of users as buyers who interact with content (content.buyer_id), potentially tracking purchases or interests.</li>
 
-
 <h2>Unsolved technical problems</h2>
 <li>Authentication has been the most challenging of all. Saving info in backend session was creating a lot of problems for me, found some hacks from online resources but eventually had to resolve to saving info in front-end session</li>
 <li>Bet management was my initial goal but state management was quite complex, considering I was trying to do it from both creator as well as buyer perspective.</li>
@@ -61,6 +64,3 @@ As a Creator,
 <li>Focusing on re-building the components structure for better state management before jumping in the bid management</li>
 <li>Have a backend specific auth</li>
 <li>Add more features on app like a page for favs from buyers portal, able to have a buyer profile page, edit functionality and deleteing prrofiles. Same for creators</li>
-
-
-
