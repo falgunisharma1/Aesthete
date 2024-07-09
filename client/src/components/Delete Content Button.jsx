@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const DeleteButton = ({ content_id, creator_id }) => {
+const DeleteButton = ({ content_id }) => {
   
   const deleteContent = async () => {
     try {

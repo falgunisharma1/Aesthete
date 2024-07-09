@@ -2,37 +2,46 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 const pool = require("./database.js");
-require('dotenv').config();
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const bodyParser = require("body-parser");
+require("dotenv").config();
+require("./myMiddleware.js")(app);
+app.use(express.json());
+app.use(cors());
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(
+  session({
+    secret: "keyboard cat",
+    resave: false,
+    saveUninitialized: true,
+  })
+);
 
 const port = process.env.PORT || 5000;
 
+// process.env.PORT ||
 
-
-
-app.use(express.json());
-app.use(cors());
-const bcrypt = require('bcryptjs');
-
+const bcrypt = require("bcryptjs");
 
 // =======================================
 //              CONTROLLERS
 // =======================================
 
-
-
 // Import Controllers
-const creatorController = require('./controllers/creator');
-// const buyerController = require('./controllers/buyer');
-const contentController = require('./controllers/content');
+const creatorController = require("./controllers/creator");
+const buyerController = require("./controllers/buyer");
+const contentController = require("./controllers/content");
 
 // Use Controllers
-app.use('/creator', creatorController);
-// app.use('/buyer', buyerController);
-app.use('/content', contentController);
+app.use("/creator", creatorController);
+app.use("/buyer", buyerController);
+app.use("/content", contentController);
 
-app.get("/", (req, res)=>{
-  res.send("hi buddy")
-})
+app.get("/", (req, res) => {
+  res.send("hi buddy");
+});
 
 // =======================================
 //              SEED DATA
@@ -70,9 +79,8 @@ app.get("/", (req, res)=>{
 // app.post("/newCreator", (req, res) => {
 //   const { username, name, email, password, profileImage, bio, coverImage } = req.body;
 
-//   console.log('Received request body:', req.body); 
+//   console.log('Received request body:', req.body);
 
-  
 //   bcrypt.genSalt(10, (err, salt) => {
 //     if (err) {
 //       console.error('Error generating salt:', err);
@@ -85,7 +93,6 @@ app.get("/", (req, res)=>{
 //         return res.status(500).send('Server Error');
 //       }
 
-     
 //       const insertSTMT = `
 //         INSERT INTO creator (username, name, email, password, profileImage, bio, coverImage)
 //         VALUES ($1, $2, $3, $4, $5, $6, $7);
@@ -110,7 +117,7 @@ app.get("/", (req, res)=>{
 // app.post("/newContent", (req, res) => {
 //   const { title, description, fileUrl, creatorId, price, sold, buyerId } = req.body;
 
-//   console.log('Received request body:', req.body); 
+//   console.log('Received request body:', req.body);
 
 //   const insertSTMT = `
 //     INSERT INTO content (title, description, fileUrl, creatorId, price, sold, buyerId)
@@ -129,9 +136,6 @@ app.get("/", (req, res)=>{
 //       res.status(500).send('Server Error');
 //     });
 // });
-
-
-
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);

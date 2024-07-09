@@ -1,23 +1,15 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import Login from "../Login";
 
 
 const BLogin = ()=>{
-
-  // const [userName, setUserName] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [errorMessage, setErrorMessage] = useState("");
-
- 
+const isBuyer = true;
 
   return (
 
     <div>
-      <form>
-        <label>
-          Name:
-        </label>
-      </form>
+      <Login isBuyer={isBuyer}/>
     </div>
   )
 }

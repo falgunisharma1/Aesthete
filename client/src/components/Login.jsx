@@ -1,43 +1,53 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Login = (props) => {
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
-  const [errorMessage, setErrorMessage] = useState("");
-  // const URL = `${props.URL}users/login`;
+  const [loginData, setLoginData] = useState({
+    username: "",
+    password: "",
+  });
 
-  const [error, setError] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const backendUrl = `${process.env.REACT_APP_BACKEND_URL}/${props.isBuyer ? 'buyer' : 'creator'}/login`;
+
+
+
   const navigate = useNavigate();
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-    try {
-      const userObj = { userName, password };
-      handleLogin(userObj);
-    } catch (error) {
-      setError("Login failed. Please try again.");
-    }
+    handleLogin(loginData);
   };
 
+  
   const handleLogin = async (userObj) => {
     try {
-      const response = await fetch(URL, {
-        method: "put",
+      const response = await fetch(backendUrl, {
+        method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(userObj),
       });
-
+        
       const data = await response.json();
-      if (data.userName) {
-        setErrorMessage("");
-        props.setCurrentUser(data);
-        props.setUserId(data.user_Id);
-        navigate("/hotels");
+
+      console.log(window.sessionStorage)
+      if (data.user && data.user.username) {
+        window.sessionStorage.setItem("userId", JSON.stringify({
+          userId: data.user.user_id,
+          buyerId: data.user.buyer_id,
+          creatorId: data.user.creator_id,
+        }));
+        
+        if (!props.isBuyer) {
+          navigate(`/myshop/${data.creator_id}`);
+        } else {
+          navigate(`/`);
+        }
+       
       } else {
-        setErrorMessage(data || "An error occurred");
+        setErrorMessage(data.message || "An error occurred during login.");
       }
     } catch (error) {
       console.error("Error:", error);
@@ -45,31 +55,45 @@ const Login = (props) => {
     }
   };
 
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setLoginData((prev) => ({ ...prev, [name]: value }));
+  };
+
   return (
-    <div className="login-form">
-      <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            type="text"
-            placeholder="Username"
-            value={userName}
-            onChange={(e) => setUserName(e.target.value)}
-          />
+    <div className="login-outside">
+      <div className="login">
+        <h2>Login</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="username">
+              <strong>Username</strong>
+            </label>
+            <input
+              type="text"
+              placeholder="Username"
+              name="username"
+              value={loginData.username}
+              onChange={handleInput}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">
+              <strong>Password</strong>
+            </label>
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={loginData.password}
+              onChange={handleInput}
+            />
+          </div>
+          <button type="submit">Login</button>
+        </form>
+        <div className="error-message-login">
+          <p>{errorMessage}</p>
         </div>
-        <div>
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-        {error && <div style={{ color: "red" }}>{error}</div>}
-        <button type="submit">Login</button>
-      </form>
-      <div className="error-message-login">
-        <p>{errorMessage}</p>
       </div>
     </div>
   );

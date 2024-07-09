@@ -244,3 +244,176 @@ body{
   color: #28a745; /* Green color for available */
   margin-top: 10px;
 }
+
+
+
+.login-form {
+  background: rgb(44, 43, 43);
+  padding: 40px 30px;
+  border-radius: 8px;
+  
+  max-width: 400px;
+  width: 100%;
+  
+}
+
+.login-form-outside {
+  background: url('../public/bg-aesthete.jpeg'); /* Correct path to the image */
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: -10% 0% -20% 0%;
+  padding: 20px 20px 20px 20px;
+  background-size: cover; /* Ensure the background image covers the whole container */
+  height: 100vh; /* Set height to full viewport height */
+  background-position: center; /* Center the background image */
+}
+
+
+.label-username-password-login{
+  color: White;
+}
+
+.login-form h2 {
+  margin-bottom: 20px;
+  color: #fefefe;
+}
+
+.login-form input {
+  width: calc(100% - 20px);
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #232323;
+  border-radius: 4px;
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+.login-form input:focus {
+  border-color: #3c00ff;
+  outline: none;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.25);
+}
+
+.login-form button {
+  width: 100%;
+  padding: 10px;
+  background: #3a3b6d;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.login-form button:hover {
+  background: #ccd3d9;
+}
+
+.login-form .error-message-login {
+  margin-top: 15px;
+  color: red;
+  font-size: 14px;
+}
+
+
+
+/* Creator Sign-up page */
+
+.sign-up-outside {
+  background: url("../public/bg-signup-aesthete.jpeg") no-repeat center center fixed; /* Ensure the image covers the entire background */
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.buyer-signup-outside{
+  background: url("../public/bg-signup-aesthete.jpeg") no-repeat center center fixed; 
+  background-size: cover;
+  display: flex;
+  min-height: 100vh;
+  padding-bottom: -100px;
+}
+
+.sign-up {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  max-height: 80%;
+  margin: 0 auto;
+  margin-top: 3%;
+  padding: 20px;
+  border: 1px solid rgba(78, 77, 77, 0.5); 
+  border-radius: 10px;
+  background-color: rgba(30, 30, 30, 0.8); 
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Optional: adds a shadow for depth */
+}
+
+.sign-up h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.sign-up form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 10%;
+}
+
+.sign-up form div {
+  margin-bottom: 15px;
+}
+
+.sign-up label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #ddd; /* Light text color for better readability */
+}
+
+.sign-up input,
+.sign-up textarea {
+  width: 80%;
+  padding: 10px; /* Increased padding for better usability */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent input background */
+  color: #fff; /* White text for inputs */
+}
+
+.sign-up textarea {
+  resize: vertical;
+  height: 60px; /* Adjusted height for better usability */
+}
+
+.sign-up button {
+  padding: 10px;
+  width:83%;
+  margin-top: 2%;
+  border: none;
+  border-radius: 5px;
+  background-color: #7cb1ea;
+  color: rgb(11, 11, 11);
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.sign-up button:hover {
+  background-color: #0056b3;
+  color: #ffffff; /* Change text color on hover for better contrast */
+}
+
+.error-message-createUser {
+  margin-top: 20px;
+  color: red;
+  text-align: center;
+}

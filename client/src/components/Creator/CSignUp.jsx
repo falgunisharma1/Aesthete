@@ -1,126 +1,157 @@
-// import React, { useState } from "react";
-// import { useNavigate } from "react-router";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom"; // Correct import
 
-// const CreateAccount = (props) => {
-//   const [newCreatorData, setNewCreatorData] = useState({
-//     name:"",
-//     email:"",
-//     username:"",
-//     password:"",
-//     profile_image: "",
-//     coverImage: "",
-//     bio:""
-//   })
-//   const [errorMessage, setErrorMessage] = useState("");
-  
-//   const navigate = useNavigate();
+const CreatorSignUp = () => {
+  const [newCreatorData, setNewCreatorData] = useState({
+    name: "",
+    email: "",
+    username: "",
+    password: "",
+    profile_image: "",
+    cover_image: "",
+    bio: "",
+    user_id: "",
+    creator_id: "",
+  });
+  const [errorMessage, setErrorMessage] = useState("");
+  const backendUrl = process.env.REACT_APP_BACKEND_URL;
 
-//   const handleSubmit = (event) => {
-//     event.preventDefault();
-//     const userObj = { userName, password, firstName, lastName, description, userImage };
-//     handleCreateUser(userObj);
-//     setUserName("");
-//     setPassword("");
-//     setFirstName("");
-//     setLastName("");
-//     setDescription("");
-//     setUserImage("");
-//   };
+  const navigate = useNavigate();
 
-//   const handleCreateUser = async (userObj) => {
-//     try {
-//       const response = await fetch(URL, {
-//         method: "post",
-//         headers: {
-//           "Content-Type": "application/json",
-//         },
-//         body: JSON.stringify(userObj),
-//       });
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    handleCreateUser(newCreatorData);
+  };
 
-//       const data = await response.json();
-//       if (data.userName) {
-//         setErrorMessage("");
-//         props.setCurrentUser(data);
-//         props.setUserId(data.user_Id);
-//         navigate("/hotels");
-//       } else {
-//         setErrorMessage(data.message || "An error occurred");
-//       }
-//     } catch (error) {
-//       console.error("Error:", error);
-//       setErrorMessage("An error occurred while creating the account.");
-//     }
-//   };
+  const handleCreateUser = async (userObj) => {
+    try {
+      const response = await fetch(`${backendUrl}/creator/signup`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userObj),
+      });
 
-//   const handleInput = (event) =>{
-//     setValues(prev => ({...prev, [event.target.name]: [event.target.value]}))
-//   }
+      const data = await response.json();
 
-//   const handleSubmit = async (event) =>{
-//     event.preventDefault();
-//     await fetch(`/creator/sign-up`, {})
-//   }
+      if (data.username) {
+        setNewCreatorData(data);
+        window.sessionStorage["userId"] = JSON.stringify({
+          userId: data.user.user_id,
+          creatorId: data.user.creator_id,
+        });
+        navigate(`/myshop/${data.creator_id}`);
+      } else {
+        setErrorMessage(data.message || "An error occurred");
+      }
+    } catch (error) {
+      console.error("Error:", error);
+      setErrorMessage("An error occurred while creating the account.");
+    }
+  };
 
-//   //print error message
-//   return (
-//     <div className="sign-up">
-//       <h2>Sign-Up</h2>
-//       <form onSubmit={handleSubmit}>
-//         <div>
-//           <label htmlFor="username"><strong>Username</strong></label>
-//           <input
-//             type="text"
-//             placeholder="Enter Username"
-//             name="username"
-//             onChange={handleInput}
-//           />
-//         </div>
-//         <div>
-//           <input
-//             type="password"
-//             placeholder="Password"
-//             value={password}
-//             onChange={(e) => setPassword(e.target.value)}
-//           />
-//         </div>
-//         <div>
-//           <input
-//             type="text"
-//             placeholder="First Name"
-//             value={firstName}
-//             onChange={(e) => setFirstName(e.target.value)}
-//           />
-//         </div>
-//         <div>
-          
-//           <input
-//             type="text"
-//             placeholder="Last Name"
-//             value={lastName}
-//             onChange={(e) => setLastName(e.target.value)}
-//           />
-//         </div>
-//         <div>
-//           <textarea
-//             value={description}
-//             placeholder="About you :)"
-//             onChange={(e) => setDescription(e.target.value)}
-//           />
-//         </div>
-//         <div>
-//           <textarea
-//             value={userImage}
-//             placeholder="Your Profile image link"
-//             onChange={(e) => setUserImage(e.target.value)}
-//           />
-//         </div>
-//         <button type="submit">Create Account</button>
-//       </form>
-//       <div className="error-message-createUser">
-//         <p>{errorMessage}</p>
-//       </div>
-//     </div>
-//   );
-// };
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setNewCreatorData((prev) => ({ ...prev, [name]: value }));
+  };
 
-// export default CreateAccount;
+  return (
+    <div className="sign-up-outside">
+      <div className="sign-up">
+        <h2>Sign-Up</h2>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="name">
+              <strong>Name</strong>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter your full name"
+              name="name"
+              value={newCreatorData.name}
+              onChange={handleInput}
+            />
+          </div>
+          <div>
+            <label htmlFor="email">
+              <strong>Email</strong>
+            </label>
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              value={newCreatorData.email}
+              onChange={handleInput}
+            />
+          </div>
+          <div>
+            <label htmlFor="username">
+              <strong>Username</strong>
+            </label>
+            <input
+              type="text"
+              placeholder="Username"
+              name="username"
+              value={newCreatorData.username}
+              onChange={handleInput}
+            />
+          </div>
+          <div>
+            <label htmlFor="password">
+              <strong>Password</strong>
+            </label>
+            <input
+              type="password"
+              placeholder="Password"
+              name="password"
+              value={newCreatorData.password}
+              onChange={handleInput}
+            />
+          </div>
+          <div>
+            <label htmlFor="bio">
+              <strong>Bio</strong>
+            </label>
+            <textarea
+              placeholder="Add what makes you YOU!"
+              name="bio"
+              value={newCreatorData.bio}
+              onChange={handleInput}
+            />
+          </div>
+          <div>
+            <label htmlFor="profile_image">
+              <strong>Profile Picture</strong>
+            </label>
+            <input
+              type="text"
+              name="profile_image"
+              placeholder="Your Profile image link"
+              value={newCreatorData.profile_image}
+              onChange={handleInput}
+            />
+          </div>
+          <div>
+            <label htmlFor="cover_image">
+              <strong>Cover Image</strong>
+            </label>
+            <input
+              type="text"
+              name="cover_image"
+              placeholder="Add a cover image for your shop"
+              value={newCreatorData.cover_image}
+              onChange={handleInput}
+            />
+          </div>
+          <button type="submit">Sign-Up</button>
+        </form>
+        <div className="error-message-createUser">
+          <p>{errorMessage}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default CreatorSignUp;

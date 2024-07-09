@@ -32,9 +32,11 @@ GROUP BY
   creator.creator_id, aesthete_user.name, creator.bio, creator.profile_image;
 
 `,
-  createNewCreator: `INSERT INTO creator (username, name, email, password, profile_image, bio, cover_image)
-  VALUES ($1, $2, $3, $4, $5, $6, $7);`,
-  findCreatorById: `SELECT 
+  createNewCreator: `INSERT INTO creator (user_id, profile_image, cover_image, bio)
+  VALUES ($1, $2, $3, $4)
+  RETURNING creator_id`,
+
+findCreatorById: `SELECT 
   creator.creator_id AS creator_id,
   creator.profile_image AS profile_image,
   creator.cover_image AS cover_image,
@@ -50,8 +52,47 @@ INNER JOIN
 WHERE 
   creator.creator_id = $1;
 `,
-  findAllContentBycreator_id: `SELECT * FROM content WHERE creator_id = $1;`,
-  createNewBuyer: null,
+findCreatorByUserId: `SELECT 
+  creator.creator_id AS creator_id,
+  creator.profile_image AS profile_image,
+  creator.cover_image AS cover_image,
+  creator.bio AS bio,
+  aesthete_user.user_id AS user_id,
+  aesthete_user.username AS username,
+  aesthete_user.name AS name,
+  aesthete_user.email AS email
+FROM 
+  creator
+INNER JOIN 
+  aesthete_user ON creator.user_id = aesthete_user.user_id
+WHERE 
+  aesthete_user.user_id = $1;
+`,
+findAllContentBycreator_id: `SELECT * FROM content WHERE creator_id = $1;`,
+
+
+  getUserByUserName: 'SELECT * FROM aesthete_user WHERE username = $1',
+
+  // Sign-up: Add a new user
+  addUser: 'INSERT INTO aesthete_user (username, password, name, email) VALUES ($1, $2, $3, $4) RETURNING *',
+
+  // Add a new buyer
+  addBuyer: 'INSERT INTO buyer (user_id) VALUES ($1) RETURNING buyer_id',
+
+  // Get all buyer info
+  getAllBuyers: `SELECT 
+                  b.buyer_id, 
+                  u.username, 
+                  u.name, 
+                  u.email 
+                FROM buyer b 
+                JOIN aesthete_user u ON b.user_id = u.user_id`,
+
+  // Update user info
+  updateUserInfo: `UPDATE aesthete_user 
+                   SET username = $1, name = $2, email = $3, password = $4 
+                   WHERE user_id = $5`,
+  getBuyerByUserId: 'SELECT buyer_id FROM buyer WHERE user_id = $1',
 };
 
 module.exports = queries;

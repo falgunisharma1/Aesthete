@@ -11,4 +11,13 @@ const pool = new Pool({
   database: "d7snnsguvk94aq"
 });
 
+
+// const pool = new Pool({
+//   user: "falgunisharma",
+//   password: "harsh",
+//   host: "localhost",
+//   port: 5432,
+//   database: "aesthete"
+// });
+
 module.exports = pool;
