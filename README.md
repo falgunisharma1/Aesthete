@@ -54,7 +54,7 @@ As a Creator,
 
 <h2>Unsolved technical problems</h2>
 <li>Authentication has been the most challenging of all. Saving info in backend session was creating a lot of problems for me, found some hacks from online resources but eventually had to resolve to saving info in front-end session</li>
-<li>Bet management was my initial goal but state management was quite complex, considering I was trying to do it from both creator as well as buyer perspective.</li>
+<li>Bid management was my initial goal but state management was quite complex, considering I was trying to do it from both creator as well as buyer perspective.</li>
 <li>Cart is yet to be completed but has figured out the payment gateway method. Will be conituining with the development to achieve that.</li>
 <li>Routes segregation and access was quite complex in this project as there are two kinds of users.</li>
 
