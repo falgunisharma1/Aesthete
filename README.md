@@ -29,7 +29,7 @@ As a Creator,
 
 
 <h2>Entity Relationship</h2>
-![entity relationship](https://github.com/falgunisharma1/Aesthete/assets/155585711/bb6c0078-1e28-4068-b989-09e2eadc58e1)
+![Entity Relationship Diagram](https://github.com/falgunisharma1/Aesthete/assets/155585711/bb6c0078-1e28-4068-b989-09e2eadc58e1)
 
 
 <h3>1. Primary Keys and Relationships:</h3>
