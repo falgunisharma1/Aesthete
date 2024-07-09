@@ -1,6 +1,6 @@
 # Aesthete
 
-App link: https://aesthete1.netlify.app/buyer/login
+App link: https://aesthete1.netlify.app
 
 Technology used:
 
